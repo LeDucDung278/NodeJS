@@ -20,8 +20,17 @@ export const List = async (req, res) => {
     }
 }
 
-export const Read =  (req, res) => {
-    res.json(products.find(item => item.id === +req.params.id));
+// API Get a product
+export const Read = async (req, res) => {
+    try {
+        const product = await Product.findOne({_id: req.params.id });
+        res.json(product);    
+    } catch (error) {
+        res.status(400).json({
+            message: "Thêm sản phẩm không thành công"
+        })
+    }
+    // res.json(products.find(item => item.id === +req.params.id));
  }
 
 // API thêm sản phẩm
