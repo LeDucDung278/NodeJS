@@ -1,29 +1,19 @@
 import { Router } from "express";
+import { Creat, List, Read, Remove, Update } from "../controllers/product";
 import { checkAuth } from "../middlewares/checkAuth";
 const router = Router();
 
-// fake data
-const products = [
-    {id: 1, name: "Product A"},
-    {id: 2, name: "Product B"}
-];
 
 
- router.get('/products', checkAuth, (req, res) => {
-    res.json(products);
- });
 
- router.get('/products/:id', checkAuth, (req, res) => {
-    res.json(products.find(item => item.id === +req.params.id));
- });
+ router.get('/products', checkAuth, List);
 
- router.post('/products', checkAuth, (req, res) => {
-    products.push(req.body)
-    res.json(products);
- });
+ router.get('/products/:id', checkAuth, Read);
 
- router.delete('/products/:id', checkAuth, (req, res) => {
-    res.json(products.filter(item => item.id === +req.params.id));
- });
+ router.post('/products', checkAuth, Creat);
+
+ router.delete('/products/:id', checkAuth, Remove);
+ 
+ router.put('/products/:id', checkAuth, Update);
 
  export default router
