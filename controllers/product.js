@@ -47,6 +47,7 @@ export const Read = async (req, res) => {
 
 // API Delete sản phẩm
  export const Remove = async (req, res) => {
+
     try {
         const product = await Product.findOneAndDelete({_id: req.params.id });
         res.json(product);    
@@ -58,6 +59,17 @@ export const Read = async (req, res) => {
     // res.json(products.filter(item => item.id === +req.params.id));
  }
 
- export const Update = (req, res) => {
-    res.json(products.map(item => item.id == req.params.id ? req.body : item));
+ export const Update = async (req, res) => {
+    const condition = {_id: req.params.id };
+    const update = req.body;
+    const optional = { new : true}
+    try {
+        const product = await Product.findOneAndUpdate(condition,update,optional);
+        res.json(product);    
+    } catch (error) {
+        res.status(400).json({
+            message: "Thêm sản phẩm không thành công"
+        })
+    }
+    // res.json(products.map(item => item.id == req.params.id ? req.body : item));
  }
