@@ -1,13 +1,5 @@
-import mongoose from "mongoose";
-// fake data
-// const products = [
-//     {id: 1, name: "Product A"},
-//     {id: 2, name: "Product B"}
-// ];
 
-// khoi tao model
-const Product = mongoose.model('Product', {name: String})
-
+import Product from "../models/product";
 // API List sản phẩm
 export const List = async (req, res) => {
     try {
