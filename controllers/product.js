@@ -3,7 +3,7 @@ import Product from "../models/product";
 // API List sản phẩm
 export const List = async (req, res) => {
     try {
-        const product = await Product.find();
+        const product = await Product.find().sort({creatAt: -1});
         res.json(product)
     } catch (error) {
         res.status(400).json({
