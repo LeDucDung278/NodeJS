@@ -7,7 +7,7 @@ export const List = async (req, res) => {
         res.json(user)
     } catch (error) {
         res.status(400).json({
-            message: "Không list được sản phẩm ra"
+            message: "Không list được tài khoản ra"
         })
     }
 } 
