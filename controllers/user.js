@@ -19,7 +19,7 @@ export const Creat = async (req, res) =>{
         res.json(user)
     } catch (error) {
         res.status(400).json({
-            message: "Đăng kí thất bại"
+            message: "Đăng kí tài khoản thất bại"
         })
     }
 }
