@@ -19,7 +19,7 @@ export const Read = async (req, res) => {
         res.json(product);    
     } catch (error) {
         res.status(400).json({
-            message: "Thêm sản phẩm không thành công!!!!!"
+            message: "Thêm sản phẩm không thành công"
         })
     }
     // res.json(products.find(item => item.id === +req.params.id));
